@@ -1,0 +1,210 @@
+.flex{
+    display:flex;
+    flex-direction:row;
+}
+p {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+}
+body {
+  width: 100%;
+  margin: 0;
+  background: #fefff2;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+  background: #ddf9ff;
+}
+.nav_title {
+  min-width: 60%;
+  align-items: center;
+  display: flex;
+}
+.nav_title__img {
+  max-width: 25px;
+}
+.nav_title__text {
+  margin-left: 8px;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #565656;
+}
+.nav_search {
+  margin-top: 13px;
+  max-height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.nav_search__button {
+  border-radius: 20px;
+  border-style: none;
+  border-width: 1px;
+  padding: 10px;
+  background-color: #9dedff;
+  text-align: start;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav_search__button:hover {
+  background-color: #53e0ff;
+}
+
+.nav_search__input {
+  background-color: rgb(219, 219, 219);
+  border-style: none;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.booklist__book__buy {
+  margin-right: 20px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  background-color: #6aff74;
+  border-style: none;
+  width: 40px;
+  height: 40px;
+  transition: 0.2s;
+}
+
+.booklist__book__buy:hover {
+  background-color: #6ac770;
+}
+
+.booklist__book__title {
+  margin: 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.booklist__book__footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.booklist__book__tags {
+  max-width: 60%;
+  margin-left: 20px;
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+.booklist__book__upper {
+  max-height: 50%;
+}
+
+.booklist__book__upper__extrainfo {
+  line-height: 2px;
+  margin-left: 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+@media (min-width: 1300px) {
+  .booklist__book {
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    width: 280px;
+    height: 190px;
+    background-color: #ececec;
+  }
+  .bookrow {
+    height: auto;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+}
+
+.radio-button{
+    position: relative;
+    margin: 20px 0;
+}
+
+.radio-button input{
+        position: absolute;
+        margin: 5px;
+        padding: 0;
+        visibility: hidden;
+
+}
+
+.radio-button .label-visible{
+        margin-left: 2em;
+        margin-bottom: 0;
+}
+
+.fake-radiobutton{
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid slategray;
+    background-color: white;
+}
+
+.fake-radiobutton:after {
+        content: "";
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        background: navy;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+.fake-radiobutton {
+    border-radius: 50%;
+}
+.fake-radiobutton:after {
+        border-radius: 50%;
+}
+
+input[type="radio"]:checked + span .fake-radiobutton:after, {
+    display: block;
+}
+
+@media (max-width: 1299px) {
+  .booklist__book {
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 8%;
+    width: 80%;
+    min-height: 300px;
+    background-color: #ececec;
+  }
+
+  .bookrow {
+    margin: 0 auto;
+    margin-top: 8%;
+    height: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

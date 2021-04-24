@@ -1,0 +1,52 @@
+﻿@using S2SBookstore.Shared;
+@using S2SBookstore.Client.Interfaces;
+
+@page "/"
+<div class="flex">
+    <p>Sort by:</p>
+    <button class="nav_search__button" @onclick="@(s=>OnSortChanging("Author"))">Author</button>
+    <button class="nav_search__button" @onclick="@(s=>OnSortChanging("Name"))">Name</button>
+    <button class="nav_search__button" @onclick="@(s=>OnSortChanging("Date"))">Date</button>
+</div>
+
+@if (bookList == null)
+{<p>Loading booklist</p>}
+else
+{
+    for (int i = 0; i < bookList.Count + 4; i += 4)
+    {
+        <div class="bookrow">
+            @for (int j = i; j < i + 4; j++)
+            {
+                if (j < bookList.Count)
+                {
+                    <BookComponent Book=@bookList[j] OnBookDeleting="OnBookDeleted" />
+                }
+            }
+        </div>
+    }
+}
+
+@code{
+
+    [Inject] IBookDataService bookDataService { get; set; }
+    public List<Book> bookList;
+    protected override async Task OnInitializedAsync()
+    {
+        bookList = await bookDataService.GetBooksAsync();
+    }
+    private void OnBookDeleted(Book book)
+    {
+        bookList.Remove(book);
+    }
+    private void OnSortChanging(string sortType)
+    {
+        switch (sortType)
+        {
+            case "Name": { var sortedBookList = bookList.OrderBy(b => b.Name).ToList(); bookList = sortedBookList; break; }
+            case "Author": { var sortedBookList = bookList.OrderBy(b => b.Author).ToList(); bookList = sortedBookList; break; }
+            case "Date": { var sortedBookList = bookList.OrderBy(b => b.ReleaseDate).ToList(); bookList = sortedBookList; break; }
+            default: break;
+        }
+    }
+}

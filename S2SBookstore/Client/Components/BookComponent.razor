@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Components;
+@using S2SBookstore.Shared;
+@using S2SBookstore.Client.Interfaces;
+
+<div class="booklist__book">
+    <div class="booklist__book__upper">
+        <p class="booklist__book__title">@Book.Name</p>
+        <p class="booklist__book__upper__extrainfo">@Book.Author</p>
+        <p class="booklist__book__upper__extrainfo">Release year: @Book.ReleaseDate</p>
+    </div>
+    <div class="booklist__book__footer">
+        <button @onclick="@BuyClick" class="booklist__book__buy"><img src="./img/money.svg"></button>
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public EventCallback<Book> OnBookDeleting { get; set; }
+    [Parameter]
+    public Book Book { get; set; }
+    [Inject]
+    protected IBookDataService dataService { get; set; }
+    public async Task BuyClick()
+    {
+        await dataService.DeleteBookAsync(Book);
+        await OnBookDeleting.InvokeAsync(Book);
+    }
+
+}
